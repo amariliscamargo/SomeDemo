@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="AddItem" xsi:type="object">SomeDemo\SomeList\Console\Command\AddItem</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="SomeDemo\SomeList\Api\BlogRepositoryInterface" type="SomeDemo\SomeList\Model\BlogRepository"/>
+	<preference for="SomeDemo\SomeList\Api\Data\BlogInterface" type="SomeDemo\SomeList\Model\Data\Blog"/>
+	<preference for="SomeDemo\SomeList\Api\Data\BlogSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="SomeDemo\SomeList\Model\ResourceModel\Blog\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">somedemo_somelist_blog</argument>
+			<argument name="resourceModel" xsi:type="string">SomeDemo\SomeList\Model\ResourceModel\Blog\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="somedemo_somelist_blog_listing_data_source" xsi:type="string">SomeDemo\SomeList\Model\ResourceModel\Blog\Grid\Collection</item>
+				<item name="somedemo_blog_entity_listing_data_source" xsi:type="string">SomeDemo\SomeList\Model\ResourceModel\Blog\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Catalog\Model\Product">
+		<plugin disabled="false" name="SomeDemo_SomeList_Plugin_Magento_Catalog_Model_Product" sortOrder="10" type="SomeDemo\SomeList\Plugin\Magento\Catalog\Model\Product"/>
+	</type>
+	<type name="Magento\Company\Model\Company\DataProvider">
+		<plugin disabled="false" name="SomeDemo_SomeList_Plugin_Magento_Company_Model_Company_DataProvider" sortOrder="10" type="SomeDemo\SomeList\Plugin\Magento\Company\Model\Company\DataProvider"/>
+	</type>
+	<type name="Magento\Company\Controller\Adminhtml\Index\Save">
+		<plugin disabled="false" name="SomeDemo_SomeList_Plugin_Magento_Company_Controller_Adminhtml_Index_Save" sortOrder="10" type="SomeDemo\SomeList\Plugin\Magento\Company\Controller\Adminhtml\Index\Save"/>
+	</type>
+	<type name="Magento\Company\Api\CompanyRepositoryInterface">
+		<plugin disabled="false" name="SomeDemo_SomeList_Plugin_Magento_Company_Api_CompanyRepositoryInterface" sortOrder="10" type="SomeDemo\SomeList\Plugin\Magento\Company\Api\CompanyRepositoryInterface"/>
+	</type>
+	<preference for="SomeDemo\SomeList\Api\DemoApiGTManagementInterface" type="SomeDemo\SomeList\Model\DemoApiGTManagement"/>
+	<preference for="SomeDemo\SomeList\Api\DemoApiPOManagementInterface" type="SomeDemo\SomeList\Model\DemoApiPOManagement"/>
+	<preference for="SomeDemo\SomeList\Api\DemoApiPTManagementInterface" type="SomeDemo\SomeList\Model\DemoApiPTManagement"/>
+	<preference for="SomeDemo\SomeList\Api\DemoApiDLManagementInterface" type="SomeDemo\SomeList\Model\DemoApiDLManagement"/>
+	<preference for="Magento\Sales\Model\Order" type="SomeDemo\SomeList\Rewrite\Magento\Sales\Model\Order"/>
+</config>

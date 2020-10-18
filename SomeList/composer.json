@@ -1,0 +1,27 @@
+{
+    "name": "somedemo/module-somelist",
+    "description": "Magento 2 (Open Source)",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "authors": [
+        {
+            "email": "ericgaowork@gmail.com",
+            "name": "Eric Gao"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "experius/module-extracheckoutaddressfields": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "SomeDemo\\SomeList\\": ""
+        }
+    }
+}

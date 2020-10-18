@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table comment="somedemo_somelist_blog Table" engine="innodb" name="somedemo_somelist_blog" resource="default">
+		<column comment="Entity Id" identity="true" name="blog_id" nullable="false" padding="6" unsigned="true" xsi:type="smallint"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="blog_id"/>
+		</constraint>
+		<column name="content" nullable="true" xsi:type="text"/>
+	</table>
+	<table name="order_address">
+		<column comment="is_active" length="255" name="is_active" nullable="true" xsi:type="varchar"/>
+	</table>
+	<table name="quote_address">
+		<column comment="is_active" length="255" name="is_active" nullable="true" xsi:type="varchar"/>
+	</table>
+	<table comment="somedemo_blog_entity_datetime Table" engine="innodb" name="somedemo_blog_entity_datetime" resource="default">
+		<column comment="Value ID" identity="true" name="value_id" nullable="false" padding="11" unsigned="false" xsi:type="int"/>
+		<column comment="Attribute ID" default="0" identity="false" name="attribute_id" nullable="false" padding="5" unsigned="true" xsi:type="smallint"/>
+		<column comment="Entity ID" default="0" identity="false" name="entity_id" nullable="false" padding="10" unsigned="true" xsi:type="int"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="value_id"/>
+		</constraint>
+		<constraint column="attribute_id" onDelete="CASCADE" referenceColumn="attribute_id" referenceId="SOMEDEMO_BLOG_ENTITY_DATETIME_ATTRIBUTE_ID_EAV_ATTRIBUTE_ATTRIBUTE_ID" referenceTable="eav_attribute" table="somedemo_blog_entity_datetime" xsi:type="foreign"/>
+		<constraint column="entity_id" onDelete="CASCADE" referenceColumn="entity_id" referenceId="SOMEDEMO_BLOG_ENTITY_DATETIME_ENTITY_ID_SOMEDEMO_BLOG_ENTITY_ENTITY_ID" referenceTable="somedemo_blog_entity" table="somedemo_blog_entity_datetime" xsi:type="foreign"/>
+		<constraint referenceId="SOMEDEMO_BLOG_ENTITY_DATETIME_ENTITY_ID_ATTRIBUTE_ID" xsi:type="unique">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+		</constraint>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_DATETIME_ATTRIBUTE_ID">
+			<column name="attribute_id"/>
+		</index>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_DATETIME_ENTITY_ID_ATTRIBUTE_ID_VALUE">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+			<column name="value"/>
+		</index>
+		<column comment="Value" name="value" nullable="false" on_update="false" xsi:type="datetime"/>
+	</table>
+	<table comment="somedemo_blog_entity_decimal Table" engine="innodb" name="somedemo_blog_entity_decimal" resource="default">
+		<column comment="Value ID" identity="true" name="value_id" nullable="false" padding="11" unsigned="false" xsi:type="int"/>
+		<column comment="Attribute ID" default="0" identity="false" name="attribute_id" nullable="false" padding="5" unsigned="true" xsi:type="smallint"/>
+		<column comment="Entity ID" default="0" identity="false" name="entity_id" nullable="false" padding="10" unsigned="true" xsi:type="int"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="value_id"/>
+		</constraint>
+		<constraint column="attribute_id" onDelete="CASCADE" referenceColumn="attribute_id" referenceId="SOMEDEMO_BLOG_ENTITY_DECIMAL_ATTRIBUTE_ID_EAV_ATTRIBUTE_ATTRIBUTE_ID" referenceTable="eav_attribute" table="somedemo_blog_entity_decimal" xsi:type="foreign"/>
+		<constraint column="entity_id" onDelete="CASCADE" referenceColumn="entity_id" referenceId="SOMEDEMO_BLOG_ENTITY_DECIMAL_ENTITY_ID_SOMEDEMO_BLOG_ENTITY_ENTITY_ID" referenceTable="somedemo_blog_entity" table="somedemo_blog_entity_decimal" xsi:type="foreign"/>
+		<constraint referenceId="SOMEDEMO_BLOG_ENTITY_DECIMAL_ENTITY_ID_ATTRIBUTE_ID" xsi:type="unique">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+		</constraint>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_DECIMAL_ATTRIBUTE_ID">
+			<column name="attribute_id"/>
+		</index>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_DECIMAL_ENTITY_ID_ATTRIBUTE_ID_VALUE">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+			<column name="value"/>
+		</index>
+		<column comment="Value" default="0" name="value" nullable="false" precision="12" scale="4" unsigned="false" xsi:type="decimal"/>
+	</table>
+	<table comment="somedemo_blog_entity_int Table" engine="innodb" name="somedemo_blog_entity_int" resource="default">
+		<column comment="Value ID" identity="true" name="value_id" nullable="false" padding="11" unsigned="false" xsi:type="int"/>
+		<column comment="Attribute ID" default="0" identity="false" name="attribute_id" nullable="false" padding="5" unsigned="true" xsi:type="smallint"/>
+		<column comment="Entity ID" default="0" identity="false" name="entity_id" nullable="false" padding="10" unsigned="true" xsi:type="int"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="value_id"/>
+		</constraint>
+		<constraint column="attribute_id" onDelete="CASCADE" referenceColumn="attribute_id" referenceId="SOMEDEMO_BLOG_ENTITY_INT_ATTRIBUTE_ID_EAV_ATTRIBUTE_ATTRIBUTE_ID" referenceTable="eav_attribute" table="somedemo_blog_entity_int" xsi:type="foreign"/>
+		<constraint column="entity_id" onDelete="CASCADE" referenceColumn="entity_id" referenceId="SOMEDEMO_BLOG_ENTITY_INT_ENTITY_ID_SOMEDEMO_BLOG_ENTITY_ENTITY_ID" referenceTable="somedemo_blog_entity" table="somedemo_blog_entity_int" xsi:type="foreign"/>
+		<constraint referenceId="SOMEDEMO_BLOG_ENTITY_INT_ENTITY_ID_ATTRIBUTE_ID" xsi:type="unique">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+		</constraint>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_INT_ATTRIBUTE_ID">
+			<column name="attribute_id"/>
+		</index>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_INT_ENTITY_ID_ATTRIBUTE_ID_VALUE">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+			<column name="value"/>
+		</index>
+		<column comment="Value" default="0" identity="false" name="value" nullable="false" padding="11" unsigned="false" xsi:type="int"/>
+	</table>
+	<table comment="somedemo_blog_entity_text Table" engine="innodb" name="somedemo_blog_entity_text" resource="default">
+		<column comment="Value ID" identity="true" name="value_id" nullable="false" padding="11" unsigned="false" xsi:type="int"/>
+		<column comment="Attribute ID" default="0" identity="false" name="attribute_id" nullable="false" padding="5" unsigned="true" xsi:type="smallint"/>
+		<column comment="Entity ID" default="0" identity="false" name="entity_id" nullable="false" padding="10" unsigned="true" xsi:type="int"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="value_id"/>
+		</constraint>
+		<constraint column="attribute_id" onDelete="CASCADE" referenceColumn="attribute_id" referenceId="SOMEDEMO_BLOG_ENTITY_TEXT_ATTRIBUTE_ID_EAV_ATTRIBUTE_ATTRIBUTE_ID" referenceTable="eav_attribute" table="somedemo_blog_entity_text" xsi:type="foreign"/>
+		<constraint column="entity_id" onDelete="CASCADE" referenceColumn="entity_id" referenceId="SOMEDEMO_BLOG_ENTITY_TEXT_ENTITY_ID_SOMEDEMO_BLOG_ENTITY_ENTITY_ID" referenceTable="somedemo_blog_entity" table="somedemo_blog_entity_text" xsi:type="foreign"/>
+		<constraint referenceId="SOMEDEMO_BLOG_ENTITY_TEXT_ENTITY_ID_ATTRIBUTE_ID" xsi:type="unique">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+		</constraint>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_TEXT_ATTRIBUTE_ID">
+			<column name="attribute_id"/>
+		</index>
+		<column comment="Value" name="value" nullable="true" xsi:type="text"/>
+	</table>
+	<table comment="somedemo_blog_entity_varchar Table" engine="innodb" name="somedemo_blog_entity_varchar" resource="default">
+		<column comment="Value ID" identity="true" name="value_id" nullable="false" padding="11" unsigned="false" xsi:type="int"/>
+		<column comment="Attribute ID" default="0" identity="false" name="attribute_id" nullable="false" padding="5" unsigned="true" xsi:type="smallint"/>
+		<column comment="Entity ID" default="0" identity="false" name="entity_id" nullable="false" padding="10" unsigned="true" xsi:type="int"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="value_id"/>
+		</constraint>
+		<constraint column="attribute_id" onDelete="CASCADE" referenceColumn="attribute_id" referenceId="SOMEDEMO_BLOG_ENTITY_VARCHAR_ATTRIBUTE_ID_EAV_ATTRIBUTE_ATTRIBUTE_ID" referenceTable="eav_attribute" table="somedemo_blog_entity_varchar" xsi:type="foreign"/>
+		<constraint column="entity_id" onDelete="CASCADE" referenceColumn="entity_id" referenceId="SOMEDEMO_BLOG_ENTITY_VARCHAR_ENTITY_ID_SOMEDEMO_BLOG_ENTITY_ENTITY_ID" referenceTable="somedemo_blog_entity" table="somedemo_blog_entity_varchar" xsi:type="foreign"/>
+		<constraint referenceId="SOMEDEMO_BLOG_ENTITY_VARCHAR_ENTITY_ID_ATTRIBUTE_ID" xsi:type="unique">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+		</constraint>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_VARCHAR_ATTRIBUTE_ID">
+			<column name="attribute_id"/>
+		</index>
+		<index indexType="btree" referenceId="SOMEDEMO_BLOG_ENTITY_VARCHAR_ENTITY_ID_ATTRIBUTE_ID_VALUE">
+			<column name="entity_id"/>
+			<column name="attribute_id"/>
+			<column name="value"/>
+		</index>
+		<column comment="Value" length="255" name="value" nullable="true" xsi:type="varchar"/>
+	</table>
+	<table comment="somedemo_blog_entity Table" engine="innodb" name="somedemo_blog_entity" resource="default">
+		<column comment="Entity Id" identity="true" name="entity_id" nullable="false" padding="10" unsigned="true" xsi:type="int"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="entity_id"/>
+		</constraint>
+		<column name="title" nullable="true" xsi:type="varchar"/>
+	</table>
+	<table name="quote">
+		<column comment="Order Comment" length="255" name="order_comment" nullable="true" xsi:type="varchar"/>
+	</table>
+</schema>

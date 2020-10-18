@@ -1,0 +1,5 @@
+
+type StoreConfig {
+    
+    inventory_options_out_of_stock_label  : String  @doc(description: "Query by inventory_options_out_of_stock_label.") 
+}

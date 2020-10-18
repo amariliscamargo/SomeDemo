@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+	<type label="SomeProduct" modelInstance="SomeDemo\SomeList\Model\Product\Type\Someproduct" name="someproduct">
+		<priceModel instance="SomeDemo\SomeList\Model\Product\Price"/>
+	</type>
+	<composableTypes>
+		<type name="someproduct"/>
+	</composableTypes>
+</config>
